@@ -181,7 +181,246 @@ print(a)
 a+=[8,9] #이런식으로도 사용 가능
 print(a)
 
+#튜플 자료형 -> 튜플은 리스트와 달리 값을 바꿀 수 없다
+t1=(1,2,3) # 기본적인 튜플
+t2(1,) #한가지 요소만 가지면 뒤에 콤마를 적어야함
+t3=1,2,3 #꼭 괄호를 넣을 필요가 없음
+
+t1=(1,2,'a','b')
+print(t1[0])
+print(t1[3]) #인덱스 값 불러오기
+
+t1=(1,2,'a','b')
+print(t1[1:]) #슬라이싱
+t2=(3,4)
+print(t1+t2) #연산가능, 합칠 수 있음
+print(t2*3)
+len(t1) #튜플의 길이
+
+t1=(1,2,3) 
+print(t1+(4,)) #튜플에 4라는 값 추가할려면 튜플을 더해줘야함 숫자 4가 아니라
+
+#딕셔너리 자료형 -> key와 Value가 쌍으로 이루어진 자료형 
+
+a={1:"hi"} # 기본적인 틀
+a={'a':[1,2,3]} # Value에 List 추가 가능
+
+a={1:'a'} #Key가 1이고 Value가 'a'
+a[2]='b' #Key가 2이고 Value가 'b'인 쌍이 a에 추가됨
+a['name']='pey' #Key가 'name'이고 Value가 'pey'인 쌍이 추가
+a[3]=[1,2,3] #Key가 3이고 Value가 리스트[1,2,3]인 쌍이 추가
+print(a)
+del a[1] #Key가 1인 쌍이 삭제됨
+print(a)
+
+grade={'pey':10,'julliet':99}
+print(grade['pey']) #grade[Key의 요소]를 불러오면 Key에 맞는 Value를 반환함
+print(grade['julliet'])
+a={1:'a',2:'b'}
+print(a[1])
+print(a[2])
+a={'a':1,'b':2}
+print(a['a'])
+print(a['b'])
+
+a={1:'a',1:'b'} #key의 값을 같게 한다면 앞의 Value가 무시된다
+print(a)
+
+#a={[1,2]:'hi'} -> List를 Key로 사용하면 오류가 뜸. -> 가변인자는 Key로 사용할 수 없음 따라서 튜플은 사용가능.
+# 물론 딕셔너리 자신도 Key로 사용할 수 없음, Value는 가변인자 사용 가능
+
+a={'name':'pey','phone':'0119993323','birth':'1118'}
+print(a.keys()) #keys()는 딕셔너리의 Key만 모아서 dict_keys객체를 반환함
+
+for k in a.keys(): #for문을 이용해서 key를 반환
+    print(k)
+
+print(list(a.keys())) #dict_keys를 리스트로 만들기
+
+print(a.values()) #Value값만 얻기
+
+print(a.items()) #Key와 Value 쌍 모두 값 얻기
+
+a.clear() #a의 Key Value 쌍 모두 지우는 함수
+print(a)
+
+a={'name':'pey','phone':'0119993323','birth':'1118'}
+print(a.get('name')) #a['name']과 똑같은 기능을 함
+print(a.get('phone'))
+#print(a['HALO']) #하지만 만약 Key가 딕셔너리 안에 없다면 이것은 오류를 발생시키지만 
+#print(a.get('HALO')) #이것은 None을 반환함
+print(a.get('foo','bar')) #만약 딕셔너리 안에 Key값이 없을 경우 미리 정해둔 디폴트 값을 대신 반환하게 하는 법
+
+print('name' in a) #딕셔너리 안에 key 값이 있는지 여부 판단하는 함수. 만약 있다면 True를 반환함
+print('email' in a) #하지만 없다면 False를 반환함
+
+a={'name':'홍길동','birth':'1128','age':'30'}
+print(a.items())
+
+#집합 자료형
+
+s1=set([1,2,3]) #set 자료형 초기화 방법
+print(s1)
+s2=set("Hello") #이것을 출력하면 {'H', 'l', 'e', 'o'} 이런식으로 나오는데 set는 중복을 허용하지 않고 순서가 없기 때문
+print(s2)
+
+s1=set([1,2,3])
+l1=list(s1) #set를 리스트로 변환
+print(l1)
+print(l1[0]) 
+t1=tuple(s1) #set를 튜플로 변환
+print(t1)
+print(t1[0])
+
+#set는 교집합, 차집합, 합집합을 구할때 유용하다.
+s1=set([1,2,3,4,5,6])
+s2=set([4,5,6,7,8,9])
+
+print(s1&s2) #교집합 
+print(s1.intersection(s2))
+
+print(s1|s2) #합집합
+print(s1.union(s2))
+
+print(s1-s2) #차집합
+print(s1.difference(s2))
+
+s1=set([1,2,3])
+s1.add(4) #set에 값 추가
+print(s1)
+s1.update([5,6,7]) #여러 값을 추가할려면 update 이용 
+print(s1)
+s1.remove(6) #set에 값 제거
+print(s1)
+
+#bool 자료형 -> True, False를 나타내는 자료형
+#자료형에도 참과 거짓이 있음. 특징으로는 문자열, 리스트 튜플, 딕셔너리등 값이 비어있으면 False를 반환하고, 숫자가 0이면 False를 반환함
+
+a=[1,2,3,4] 
+while a: #a가 참일동안 -> a가 빈 리스트가 될 때 까지-> 왜냐 [] 이면 False 이기 때문
+    print(a.pop())
+
+print(bool([1,2,3])) #리스트에 값이 있으므로 참
+print(bool([])) #리스트가 비어있으므로 거짓
+print(bool(0)) #0이므로 거짓
+print(bool(3)) #0이 아닌 숫자이므로 참
+
+# 자료형의 값을 저장하는 공간, 변수
+#C++와 Java와 달리 python은 변수에 저장된 값을 스스로 판단하여 자료형을 지정. 
+
+a=[1,2,3]
+print(id(a)) #2251186730688라는 a리스트의 주소값이 반환된다
+
+a=[1,2,3]
+b=a #b와 a는 완전히 같은곳을 가르킴(주소가 같다)->동일한 객체
+print(a is b) #True가 나온다
+a[1]=4 #b도 똑같이 [1,4,3]이 출력된다
+
+#b변수를 가져올 때 a 변수의 값을 가져오면서 다른 주소를 가르키는 방법
+
+#1.
+a=[1,2,3]
+b=a[:] #a의 첫번째 요소 부터 마지막 까지 슬라이싱을 하기
+a[1]=4
+print(a)
+print(b)
+
+#2.
+from copy import copy #copy라는 파이썬 모듈을 이용하기
+a=[1,2,3]
+b=copy(a)
+print(a is b) #False가 나옴. 값은 같지만 내장된 주소가 다르다는 뜻
+
+a,b='python','life' #튜플로 지정
+print(a)
+print(b)
+[a,b]=['python','life'] #리스트로 지정
+print(a,b)
+
+a=3
+b=5
+a,b=b,a #두 변수의 값을 바꿈
+print(a,b)
+
+#연습문제
+
+#1.
+a=80
+b=75
+c=55
+print("%d" % int((a+b+c)/3))
+
+#2. %로 나머지를 구한 후 0이면 짝수, 1이면 홀수
+
+#3. 
+pin="881120-1068234"
+yyyymmdd=pin[:6]
+num=pin[7:]
+print(yyyymmdd)
+print(num)
+
+#4.
+pin="881120-1068234"
+print(pin[7])
+
+#5.
+a='a:b:c:d'
+b=a.replace(':','#')
+print(b)
+
+#6.
+a=[1,3,5,4,2]
+a.sort()
+a.reverse()
+print(a)
+
+#7. 리스트를 공백으로 합치려면 join함수 사용하자!
+a=['Life','is','too','short']
+result=" ".join(a)
+print(result)
+
+#8.
+a=(1,2,3)
+a=a+(4,) #값을 더하는게 아닌 튜플을 더해야함 -> 튜플을 새로 만드는거라 주소가 바뀜
+print(a)
+
+#9. 나머지는 Key가 바뀌지 않는데 [1]는 리스트므로 Key로 사용하기 부적합함
+
+#10.
+a={'A':90,'B':80,'C':70}
+result = a.pop('B')
+print(a)
+print(result)
+
+#Q11.
+a=[1,1,1,2,2,3,3,3,4,4,5]
+aSet=set(a)
+b=list(aSet)
+print(b)
+
+#Q12. 똑같은 리스트를 가르키고 있기 때문에 결과가 바뀌어서 출력됨.
 '''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
